@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista Actividades</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+    <div class="titulo">
+        <h1>Listado de Actividades</h1>
+        <div class="contenedor">
+            <div class="cajones">
+                <input type="" id="actividad" placeholder="Ingresa Actividad">
+                <button type="button" id="agregar">+</button>
+                <input type="checkbox" id="check">
+                <input type="date" id="fecha">
+                <button type="button" id="ordenar">Ordenar</button>
+            </div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Nombre Actividad</td>
+                <td>Prioridad</td>
+                <td>Fecha</td>
+            </tr>
+        </thead>
+        <tbody id="datos"></tbody>
+    </table>
+
+    <script>
+        var boton = document.getElementById('agregar');
+        var actividadInput = document.getElementById('actividad');
+        var fechaInput = document.getElementById('fecha');
+        var datos = document.getElementById('datos');
+        var check = document.getElementById('check');
+        var ordenarBtn = document.getElementById('ordenar');
+        var lista = [];
+        var ordenAscendente = true; // Variable para controlar el orden
+
+        boton.addEventListener('click', function () {
+            var actividad = actividadInput.value.trim();
+            var fecha = fechaInput.value;
+            var checkValue = check.checked;
+
+            if (actividad === '' || fecha === '') {
+                alert('Ingrese actividad y fecha');
+                return;
+            }
+
+            var fila = document.createElement('tr');
+
+            var celdaActividad = document.createElement('td');
+            celdaActividad.textContent = actividad;
+            fila.appendChild(celdaActividad);
+
+            var celdaPrioridad = document.createElement('td');
+            celdaPrioridad.textContent = checkValue ? 'Alta' : 'Baja';
+            fila.appendChild(celdaPrioridad);
+
+            var celdaFecha = document.createElement('td');
+            celdaFecha.textContent = fecha;
+            fila.appendChild(celdaFecha);
+
+            datos.appendChild(fila);
+
+            lista.push({ actividad: actividad, fecha: fecha, check: checkValue });
+
+            // Limpiar campos después de agregar
+            actividadInput.value = "";
+            fechaInput.value = "";
+            check.checked = false;
+
+            // Ordenar automáticamente
+            mostrar();
+        });
+
+        function mostrar() {
+    // Eliminar las filas existentes en el tbody
+    while (datos.firstChild) {
+        datos.removeChild(datos.firstChild);
+    }
+
+    // Ordenar la lista según la prioridad y el estado actual
+    lista.sort(function (a, b) {
+        var orden = ordenAscendente ? 1 : -1;
+        return (a.check - b.check) * orden;
+    });
+
+    // Agregar filas a la tabla con el ciclo for
+    for (var i = 0; i < lista.length; i++) {
+        var fila = document.createElement('tr');
+
+        var celdaActividad = document.createElement('td');
+        celdaActividad.textContent = lista[i].actividad;
+        fila.appendChild(celdaActividad);
+
+        var celdaPrioridad = document.createElement('td');
+        celdaPrioridad.textContent = lista[i].check ? 'Alta' : 'Baja';
+        fila.appendChild(celdaPrioridad);
+
+        var celdaFecha = document.createElement('td');
+        celdaFecha.textContent = lista[i].fecha;
+        fila.appendChild(celdaFecha);
+
+        datos.appendChild(fila);
+    }
+}
+
+
+        ordenarBtn.addEventListener('click', function () {
+            // Cambiar el estado del orden al hacer clic en el botón "Ordenar"
+            ordenAscendente = !ordenAscendente;
+            mostrar();
+        });
+
+        mostrar();
+    </script>
+</body>
+
+</html>

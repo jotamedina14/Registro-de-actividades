@@ -1,0 +1,142 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.titulo {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cajones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#actividad {
+    padding: 8px;
+    border: 1px solid #3498db;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+#agregar {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#agregar:hover {
+    background-color: #27ae60;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#fecha {
+    padding: 8px;
+    border: 1px solid #3498db;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+/* Estilo básico para el checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3498db;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Estilo cuando el checkbox está marcado */
+input[type="checkbox"]:checked {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+/* Estilo del indicador dentro del checkbox */
+input[type="checkbox"]::before {
+    content: '\2713';
+    display: block;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    visibility: hidden;
+}
+
+/* Estilo del indicador cuando el checkbox está marcado */
+input[type="checkbox"]:checked::before {
+    visibility: visible;
+}
+/* Estilos para la tabla */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+#agregar {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#agregar:hover {
+    background-color: #45a049;
+}
